@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <title>The Chef's Quiz Show!</title>
+    </head>
+
+    <!--Body element.-->
+    <body>
+        <header>
+            <!--Button for The Score Board.-->
+            <button id="modalButton">💯 View Score Board!</button>
+
+            <!--Modal Box element from https://www.w3schools.com/howto/howto_css_modals.asp -->
+            <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!--Close element for Modal Box.-->
+                            <span class="close">&times;</span>
+                            <!--Header element for Modal Box.-->
+                            <h2 class="modal-h2">The Score Board</h2>
+                        </div>
+                        
+                    <!--Body element for Modal Box.-->
+                    <div class="modal-body">
+                        <!--Element for Javascript to insert user scores.-->
+                        <p id="modalText"></p>
+                        <!--Button to clear the scores within Modal Box.-->
+                        <button id="clear-hs">Clear High Score</button>
+                      </div>
+                    </div>
+            </div>
+
+            <!--Section element for the timer.-->
+            <section class= "quiz-timer">
+                <!--Header for the timer.-->
+                <h3>⏲ Timer:</h3>
+                    <!--Text for time number.-->
+                    <div class="time-counter">60</div>
+                    <!--Text for remaining time.-->
+                <p class="leftover-text">seconds remain</p>
+            </section>
+
+        </header>
+        <!--Main element.-->
+        <main>
+            <!--Container element for main content.-->
+            <section class="starting-container">
+                <!--Header element for the main content-->
+                <h2>👨‍🍳 The Chef's Quiz Show! 👩‍🍳</h2>
+                <!--Description text, replaced with questions and results through Javascript-->
+                <p class="quiz-text" id="quiz-text">
+                    Test yourself in this quiz about culinary arts, techniques, and delights! <br>
+                    You have a set amount of time to complete, with a high score at the end. <br>
+                    Any wrong answers or your timer will be penalized by <span>10 seconds</span>. Good luck and have fun! <br>
+                </p>
+                <!--Button to start quiz-->
+                <button class="start-button" id="start-button">Start Game</button>
+                <!--Container element to hold the choices for the questions-->
+                <div class="choice" id="choice-container"></div>
+                <!--Banner that displays right or wrong answer for user choices.-->
+                <div id="result-banner"></div>
+                <!--Element to put the reset button after the game is over.-->
+                <div class="reset" id="reset"></div>
+            </section>
+        </main>
+        <!--link source to the Javascript script.-->
+    <script src="assets/js/script.js"></script>
+    </body>
+</html>
