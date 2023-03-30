@@ -117,23 +117,23 @@ function rightAnswer() {
 
 // Function to start the countdown timer.
 function startTimer() {
-  timer = setInterval(function() {
-    this.timerCount = Math.max(0, this.timerCount - 1);;
-    timerElement.textContent = timerCount;
-
-    if (timerCount === 0) {
-        clearInterval(timer);
+    timer = setInterval(function() {
+        this.timerCount = Math.max(0, this.timerCount - 1);;
         timerElement.textContent = timerCount;
-        document.getElementById('quiz-text').style.display = 'none';
-        document.getElementById("result-banner").style.color = "red";
-        results.innerText = "💣 Time's up! 💣"
-        document.getElementById('buttonOne').style.display = 'none';
-        document.getElementById('buttonTwo').style.display = 'none';
-        document.getElementById('buttonThree').style.display = 'none';
-        document.getElementById('buttonFour').style.display = 'none';
-        endResult();
-    } 
-  }, 1000);
+
+        if (timerCount === 0) {
+            clearInterval(timer);
+            timerElement.textContent = timerCount;
+            document.getElementById('quiz-text').style.display = 'none';
+            document.getElementById("result-banner").style.color = "red";
+            results.innerText = "💣 Time's up! 💣"
+            document.getElementById('buttonOne').style.display = 'none';
+            document.getElementById('buttonTwo').style.display = 'none';
+            document.getElementById('buttonThree').style.display = 'none';
+            document.getElementById('buttonFour').style.display = 'none';
+            endResult();
+        } 
+    }, 1000);
 }
 
 // Function to start the first question.
@@ -142,26 +142,31 @@ function changeQuestion() {
     item.innerText = chefQuestions[0].question;
     startButton.style.display = "none";
     
+    //
     createButtons(0);
  }
 
- // Function to update the question after the choice buttons are clicked.
+// Function to update the question after the choice buttons are clicked.
 function updateQuestion(num) {
     if (chefQuestions.length <= num) {
         clearInterval(timer);
         currentScore = rightCounter;
 
+        // 
         var y = document.getElementById("quiz-text");
         y.innerText = "📋Total score: " + currentScore + " / 5" + "\n ⏲Remaining time: " + timerCount + "s." + "\n Enter your name below to save your score!";
         y.style.fontWeight = 'bold';
 
+        // 
         document.getElementById("result-banner").style.borderTop = "none";
 
+        // 
         var x = document.createElement("input");
         x.setAttribute("type", "text");
         x.setAttribute("maxlength", 10);
         x.placeholder = "Enter name here... (max: 10 letters)"
 
+        // 
         x.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
                 if (localStorage.getItem("Score") === null) {

@@ -11,10 +11,15 @@ But worry not, it's a lot simpler than you think. Have the confidence to succeed
 **Github Repo:** [Link to Github repository!](https://github.com/Heaveness/chef-tech-quiz) <br>
 
 ## Previews
+Homepage: <br>
 ![Website Preview Image.](/assets/images/website-preview-1.png) <br>
+Questions & Choices: <br>
 ![Website Preview Image.](/assets/images/website-preview-2.png) <br>
+Final Results: <br>
 ![Website Preview Image.](/assets/images/website-preview-3.png) <br>
+Play Again?: <br>
 ![Website Preview Image.](/assets/images/website-preview-4.png) <br>
+Score Board: <br>
 ![Website Preview Image.](/assets/images/website-preview-5.png) <br>
 
 ## Credits
