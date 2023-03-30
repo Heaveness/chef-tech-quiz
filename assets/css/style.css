@@ -173,6 +173,19 @@ h3 {
     border-top: dashed 2px var(--white-color);
 }
 
+#reset-banner {
+    padding: 20px;
+    padding-bottom: 30px;
+    color: var(--white-color);
+    font-size: 48px;
+    text-decoration: underline;
+    font-family: var(--font-family);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* CSS properties for the time countdown number. */
 .time-counter {
     padding-top: 18px;

@@ -7,7 +7,6 @@ var results = document.querySelector("#result-banner");
 
 var currentScore = 0;
 var rightCounter = 0;
-var wrongCounter = 0;
 var highScore = 0;
 var timer;
 var timerCount;
@@ -75,31 +74,28 @@ var chefQuestions = [
     },
 ];
 
-function startQuiz(sq) {
-  timerCount = 60;
+function startQuiz(event) {
+  timerCount = 40;
 
-  sq.preventDefault();
+  event.preventDefault();
   startTimer();
+  changeQuestion();
 }
 
 function wrongAnswer() {
   if (timerCount > 10){
     timerCount -= 10;
     timerElement.textContent = timerCount;
-    wrongCounter++;
     document.getElementById("result-banner").style.color = "red";
     results.innerText = "❌ Wrong Answer! ❌"
   } else if (timerCount <= 10) {
     timerCount = 0;
     timerElement.textContent = timerCount;
     clearInterval(timer);
+    document.getElementById('quiz-text').style.display = 'none';
     document.getElementById("result-banner").style.color = "red";
-    results.innerText = "💣Time's up!💣"
-    document.getElementById('buttonOne').style.display = 'none';
-    document.getElementById('buttonTwo').style.display = 'none';
-    document.getElementById('buttonThree').style.display = 'none';
-    document.getElementById('buttonFour').style.display = 'none';
-    updateQuestion(5);
+    results.innerText = "💣 Wrong Answer & Time's up! 💣"
+    endResult();
   }
 }
 
@@ -110,56 +106,67 @@ function rightAnswer() {
 }
 
 function startTimer() {
-  function changeQuestion() {
-      const item = document.getElementById("quiz-text");
-      item.innerText = chefQuestions[0].question;
-      startButton.style.display = "none";
-    
-      createButtons(0);
-  }
-  changeQuestion();
   timer = setInterval(function() {
-    timerCount -= 1;
+    this.timerCount = Math.max(0, this.timerCount - 1);;
     timerElement.textContent = timerCount;
     if (timerCount === 0) {
-      wrongAnswer();
+        clearInterval(timer);
+        timerElement.textContent = timerCount;
+        document.getElementById('quiz-text').style.display = 'none';
+        document.getElementById("result-banner").style.color = "red";
+        results.innerText = "💣 Time's up! 💣"
+        document.getElementById('buttonOne').style.display = 'none';
+        document.getElementById('buttonTwo').style.display = 'none';
+        document.getElementById('buttonThree').style.display = 'none';
+        document.getElementById('buttonFour').style.display = 'none';
+        endResult();
     } 
   }, 1000);
 }
+  
+function changeQuestion() {
+    const item = document.getElementById("quiz-text");
+    item.innerText = chefQuestions[0].question;
+    startButton.style.display = "none";
+    
+    createButtons(0);
+ }
 
 function updateQuestion(num) {
-  if (chefQuestions.length <= num) {
-    clearInterval(timer);
-    currentScore = rightCounter;
+    if (chefQuestions.length <= num) {
+        clearInterval(timer);
+        currentScore = rightCounter;
 
-    var y = document.getElementById("quiz-text");
-    y.innerText = "📋Total score: " + currentScore + " / 5" + "\n ⏲Remaining time: " + timerCount + "s." + "\n Enter your name below to save your score!";
-    y.style.fontWeight = 'bold';
+        var y = document.getElementById("quiz-text");
+        y.innerText = "📋Total score: " + currentScore + " / 5" + "\n ⏲Remaining time: " + timerCount + "s." + "\n Enter your name below to save your score!";
+        y.style.fontWeight = 'bold';
 
-    document.getElementById("result-banner").style.borderTop = "none";
+        document.getElementById("result-banner").style.borderTop = "none";
 
-    var x = document.createElement("input");
-    x.setAttribute("type", "text");
-    x.setAttribute("maxlength", 10);
-    x.placeholder = "Enter name here... (max: 10 letters)"
+        var x = document.createElement("input");
+        x.setAttribute("type", "text");
+        x.setAttribute("maxlength", 10);
+        x.placeholder = "Enter name here... (max: 10 letters)"
 
-    x.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        if (localStorage.getItem("Score") === null) {
-          localStorage.setItem("Score", `🍳 Chef: ${document.getElementsByTagName("input")[0].value} | 📋 Score: ${currentScore} | ⏲ Timer: ${timerCount}`);
-        } else {
-          var local = localStorage.getItem("Score");
-          var final = local.concat("\n", `🍳 Chef: ${document.getElementsByTagName("input")[0].value} | 📋 Score: ${currentScore} | ⏲ Timer: ${timerCount}`);
-          localStorage.setItem("Score", final);
+        x.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                if (localStorage.getItem("Score") === null) {
+                    localStorage.setItem("Score", `🍳 Chef: ${document.getElementsByTagName("input")[0].value} | 📋 Score: ${currentScore} | ⏲ Timer: ${timerCount}`);
+                } else {
+                    var local = localStorage.getItem("Score");
+                    var final = local.concat("\n", `🍳 Chef: ${document.getElementsByTagName("input")[0].value} | 📋 Score: ${currentScore} | ⏲ Timer: ${timerCount}`);
+                    localStorage.setItem("Score", final);
+                }
+                document.getElementById("result-banner").style.display = "none";
+                document.getElementById("quiz-text").style.borderBottom = "none";
+                return endResult();
+            }
         }
-        return endResult();
-      }
-    }
     )
     document.body.appendChild(x);
-    document.getElementById("quiz-text").appendChild(x)
-    
-  } else {
+    document.getElementById("quiz-text").appendChild(x)  
+  } 
+  else {
     const item = document.getElementById("quiz-text");
     item.innerText = chefQuestions[num].question;
   }
@@ -167,7 +174,7 @@ function updateQuestion(num) {
 
 function endResult() {
   var y = document.getElementById("quiz-text");
-  y.innerText = `Thank you for playing!" + "\n You can check your score through the "💯View Score Board!" button anytime!`;
+  y.innerText = `Thank you for playing! \n Check the "💯View Score Board!" button anytime!`;
   y.style.fontWeight = 'bold';
 
   const resetButton = document.createElement('button');
@@ -176,8 +183,11 @@ function endResult() {
   document.getElementById("reset").appendChild(resetButton);
   resetButton.addEventListener("click", goHome);
 
-  var z = document.getElementById("result-banner");
-  document.getElementById("result-banner").style.color = "white";
+  document.getElementById("result-banner").style.borderTop = "none";
+  document.getElementById("reset-banner").style.borderTop = "dashed";
+
+  var z = document.getElementById("reset-banner");
+  document.getElementById("reset-banner").style.color = "white";
   z.innerText = "⬇ Not satisfied? Want to try again? ⬇";
 }
 
@@ -186,9 +196,9 @@ function createButtons(question) {
 if (question === 5 ) {
   return;
 }
-  if (chefQuestions.length <= question || timerCount === 0) {
+if (chefQuestions.length <= question || timerCount === 0) {
     return question;
-  }
+}
 
   const buttonOne = document.createElement('button');
   buttonOne.setAttribute("id", "buttonOne");
@@ -228,11 +238,11 @@ if (question === 5 ) {
       } else {
         //say incorrect
         wrongAnswer()
-        createButtons(question = question + 1);
         buttonOne.remove();
         buttonTwo.remove();
         buttonThree.remove();
         buttonFour.remove();
+        createButtons(question = question + 1);
         updateQuestion(question);
       }
     }
@@ -333,4 +343,5 @@ clear.onclick = function() {
   localStorage.clear();
   document.getElementById('modalText').innerHTML = "";
 }
+
 startButton.addEventListener("click", startQuiz);

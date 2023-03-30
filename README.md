@@ -1,7 +1,7 @@
 # Chef-Tech-Quiz
 
 ## Description
-A quiz trivia aimed at testing your knowledge of skills and techniques of the world of culinary arts! <br>
+A quiz trivia aimed a challenging your knowledge of skills and techniques of the world of culinary arts! <br>
 You have a set timer to answer each question and receive a high score at the end that you can log into your local storage. <br>
 Be careful as any wrong answer will cause you to lose time in your remaining timer! <br>
 But worry not, it's a lot simpler than you think. Have the confidence to succeed all trials and tribulations! Do you have what it takes to win? <br>
