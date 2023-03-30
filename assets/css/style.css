@@ -1,0 +1,258 @@
+/* Root CSS variables used for properties below. */
+:root{
+    --black-color: black;
+    --white-color: white;
+    --gold-color: gold;
+    --gray-color: gray;
+    --font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS properties for body element. */
+body {
+    background-color: var(--black-color);
+}
+
+/* CSS properties for header element. */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 32px;
+    background-color: var(--gold-color);
+    color: var(--black-color);
+    font-family: var(--font-family);
+}
+
+/* CSS properties for h2 element. */
+h2 {
+    padding: 10px;
+    margin: 10px;
+    color: var(--white-color);
+    font-size: 88px;
+    text-decoration: underline;
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+/*CSS for modal box. */
+/*The Modal (background). CSS retrieved from https://www.w3schools.com/howto/howto_css_modals.asp */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box. */
+.modal-content {
+    background-color: var(--black-color);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--gold-color);
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 16px;
+}
+  
+/* The Close Button. */
+.close {
+    background-color: var(--black-color);
+    color: var(--gray-color);
+    float: right;
+    margin: 1%;
+    padding: 5px;
+    font-size: 32px;
+    font-weight: bold;
+    border: solid 3px var(--black-color);
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+/* The Close Button when hovered with mouse pointer. */
+.close:hover {
+    color: var(--white-color);
+    border: solid 3px var(--white-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS properties for the View High Score button. */
+#modalButton {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    text-decoration: none;
+    cursor: pointer;
+    border: solid 3px var(--black-color);
+    border-radius: 16px;
+    padding: 10px;
+    font-family: var(--font-family);
+    transition: 0.3s;
+    opacity: 1.0;
+    width: 19%;
+}
+
+/* CSS properties for hovering and focusing on the View High Score button. */
+#modalButton:hover,
+#modalButton:focus {
+    border: solid 3px var(--white-color);
+}
+
+/* CSS properties for header within the modal box. */
+.modal-header {
+    background-color: var(--gold-color);
+    border-radius: 16px;
+}
+
+/* CSS properties for text of the header within the modal box. */
+.modal-h2 {
+    color: var(--black-color);
+}
+
+/* CSS properties for user score text within the modal box. */
+#modalText {
+    color: var(--white-color);
+    font-size: 64px;
+}
+
+/* CSS properties for clear high score button within the modal box. */
+#clear-hs {
+    display: flex;
+    padding: 10px;
+    margin:auto;
+    width: 100%;
+    justify-content: center;
+}
+
+/* CSS properties for all of p element. */
+p {
+    padding: 10px;
+    color: var(--black-color);
+    font-family: var(--font-family);
+}
+
+/* CSS properties for text input box for high score. */
+input {
+    color: var(--black-color);
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    margin-left: 25%;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 32px;
+    font-family: var(--font-family);
+}
+
+/* CSS properties for h3 element. */
+h3 {
+    padding-top: 9px;
+    padding-right: 15px;
+    color: var(--black-color);
+    font-family: var(--font-family);
+}
+
+/* CSS properties for result banner element. */
+#result-banner {
+    padding: 20px;
+    padding-bottom: 30px;
+    color: var(--white-color);
+    font-size: 48px;
+    text-decoration: underline;
+    font-family: var(--font-family);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: dashed 2px var(--white-color);
+}
+
+/* CSS properties for the time countdown number. */
+.time-counter {
+    padding-top: 18px;
+    color: var(--black-color);
+    text-decoration: underline;
+}
+
+/* CSS properties for timer title. */
+.quiz-timer {
+    padding: 10px;
+    margin: auto 20px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 32px;
+}
+
+/* CSS properties for seconds remaining text. */
+.leftover-text {
+    padding-top: 18px;
+    padding-left: 10px;
+    font-size: 32px;
+}
+
+/* CSS properties for text that houses the description, questions, and results. */
+.quiz-text {
+    padding: 30px;
+    margin: 20px auto;
+    color: var(--white-color);
+    line-height: 48px;
+    font-size: 32px;
+    justify-content: center;
+    text-align: center;
+    border-bottom: dashed 2px var(--white-color);
+}
+
+/* CSS properties for the main element. */
+main {
+    padding: 15px;
+    margin-top: 50px;
+    margin-bottom: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CSS properties for max width of the container within main element. */
+.starting-container {
+    max-width: 75%;
+}
+
+/* CSS properties for all buttons. */
+button {
+    display: flex;
+    padding: 16px;
+    cursor: pointer;
+    margin: 16px;
+    font-size: 32px;
+    border-radius: 16px;
+    border: solid 3px var(--gold-color);
+    background-color: var(--gold-color);
+    transition: 0.3s;
+    opacity: 0.85;
+    width: 100%;
+}
+
+/* CSS properties for hovering all of the buttons. */
+button:hover {
+    opacity: 1.0;
+    border: solid 3px var(--white-color);
+}
+
+/* CSS properties for aligning the game reset button. */
+.reset {
+    display: flex;
+    justify-content: center;
+}
+
+/* CSS properties for size of the game reset button. */
+#resetButton {
+    display:flex;
+    justify-content: center;
+    width: 50%;
+}
