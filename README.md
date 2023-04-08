@@ -25,7 +25,6 @@ But worry not, it's a lot simpler than you think. Have the confidence to succeed
 ## Credits
 
 **Websites:** W3schools, stackoverflow, & reddit <br>
-**Stock Images:** Marek Piwnicki, Recha Oktaviani, Arnold Francisca, Jozsef Hocza, Steve Johnson <br>
 **Instructor(s):** Ali Maqsood, Daler Singh <br>
 **Assistant Instructor(s):** Shihan, Adam, Krishna, Tareque Moatar <br>
 **Institution:** University of Toronto <br>
